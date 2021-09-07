@@ -1,17 +1,24 @@
+import './NavBar.css'
+
 const NavBar = () => {
   return (
-  <div>
+  <nav className='NavBar'>
+  <div className='LeftNav'>
+    <div className='NavOptionsLeft'>
      <h1>Sapphira</h1>
      <img src=""></img>
-     <nav>
-			<ul>
-				<li><a href="#">Historia</a></li>
-				<li><a href="#">Productos</a></li>
-				<li><a href="#">¿Como se usa?</a></li>
-				<li><a href="#">Contacto</a></li>
-			</ul>
-		</nav>
+     <button className='Option'>Inicio</button>
+     <button className='Option'>Productos</button>
+     <button className='Option'>como se usa?</button>
+     <button className='Option'>Contacto</button>
+    </div>
   </div>
+  <div className='RightNav'>
+    <div className='NavOptionsRight'>
+      <button className='Option'>Ingresa</button>
+    </div>
+  </div>
+</nav>
   )
 }
   

@@ -1,0 +1,51 @@
+.NavBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    background: #B36A5E;
+}
+
+.NavOptionsLeft {
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(6,auto);
+    grid-gap:50px;
+    list-style-type: none;
+}
+
+.NavOptionsRight {
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    grid-gap:50px;
+    list-style-type: none;
+}
+
+.LeftNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.RightNav {
+    display: flex;
+    padding: 0px 5px;
+    margin-top: -30px;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.Option {
+    height: 25px;
+    margin-top: 41px;
+    background-color: #B36A5E;
+    color: white;
+    text-decoration: none;
+    padding: 2px;
+    border-color: transparent;
+
+    
+}
