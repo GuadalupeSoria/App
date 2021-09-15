@@ -16,12 +16,14 @@ const Counter = () => {
             setCount(count + 1)     
         }
     }
+      
 
     return (
         <div>
             <h1 style={{ color: '#B36A5E'}}>{count}</h1>
             <button onClick={funcionRestar}>-</button>
             <button onClick={funcionStock}>+</button>
+            <button>Agregar al carrito</button>
         </div>
     )
 }
