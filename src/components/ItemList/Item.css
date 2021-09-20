@@ -1,0 +1,13 @@
+.catalogo {
+    display: flex;
+    color: #b36a5e;
+    list-style: none;
+    align-items: center;
+    padding: 0px;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 25px;
+  
+    
+  }
+
