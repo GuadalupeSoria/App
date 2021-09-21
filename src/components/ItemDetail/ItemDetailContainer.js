@@ -1,7 +1,6 @@
-import './Item.css'
+import '../ItemList/Item.css'
 import imagen from './B.jpg'
 import { useState,useEffect } from 'react';
-import ItemDetail from './ItemDetail';
 import Kits from './ItemDetail';
 
 function ItemDetail () {
@@ -24,7 +23,7 @@ const ItemDetailContainer = () => {
 
     return (
         <div>
-        <h1>CATALOGO</h1>
+        <h1>Kits</h1>
         <ul className="catalogo">
          { ListProducts.map(product => <li key={product.id}>{product.name}<br></br><img 
         src={imagen}></img><br></br>${product.price}</li>)}
