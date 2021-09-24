@@ -1,31 +1,54 @@
-import { useState } from 'react'
+import {useState, 
+    useContext
+} from 'react'
+import NotificationContext from '../../context/NotificationContext'
+import '../Login/Login.css'
 
-const Counter = () => {
-     const [count, setCount] = useState(0)
-       
-     const funcionRestar = () => {
-           if (count <= 0) {
-           } else {
-               setCount(count - 1)     
-           }
+const ItemCount = ({product, productsAdded, addProdFunction, setCount})=> {
+   const [quantity,setQuantity] = useState(0)
+   const { setNotification } = useContext(NotificationContext)
+
+   const onAdd = () => {
+       if(quantity < product.stock) {
+           setQuantity(quantity+1)
        }
+   }
 
-       const funcionStock = () => {
-        if (count >= 25) {
-        } else {
-            setCount(count + 1)     
-        }
-    }
-      
+   const onRemove = () => {
+       if(quantity > 0) {
+           setQuantity(quantity - 1)
+       }     
+   }
 
-    return (
-        <div>
-            <h1 style={{ color: '#B36A5E'}}>{count}</h1>
-            <button onClick={funcionRestar}>-</button>
-            <button onClick={funcionStock}>+</button>
-            <button>Agregar al carrito</button>
-        </div>
-    )
+   const onAddtoCart = () =>{
+       const newProduct = {
+           ...product,
+           quantity: quantity
+       }
+       setCount(quantity) 
+       addProdFunction([...productsAdded, newProduct])
+       setNotification('success', `${product.name} ha sido agregado al carrito`)
+   }
+
+
+   
+   return(
+       <div align="center">          
+           <table >
+               <tbody>
+                   <tr>
+                       <td align="left"><button className="Button btn btn-outline-success" onClick={()=> onRemove() }>-</button></td>
+                       <td align="center" style={{fontSize : '20px'}}>{quantity}</td>
+                       <td align="right"><button className="Button btn btn-outline-success" onClick={() => onAdd() }>+</button></td>
+                   </tr>
+                   <tr>
+                       <td align="center" colSpan="5"><button className="Button btn btn-outline-success" onClick={()=>onAddtoCart()}>Agregar al carrito</button></td>
+                   </tr>
+
+               </tbody>
+           </table>       
+       </div>
+   )
+
 }
-
-export default Counter
+export default ItemCount

@@ -1,30 +1,37 @@
+import React from 'react'
+import { useState, useEffect } from 'react'
+import ItemList from './ItemList'
 import './Item.css'
-import imagenes from './img/A.png'
-import { useState,useEffect } from 'react';
-import ItemList from './ItemList';
+import { getProducts } from '../../products'
+import { useParams } from 'react-router-dom'
 
-const ItemListContainer = () => {
-    const [ListProducts,setListProducts] = useState([])
 
+const ItemListContainer = ()=> {
+    const [products, setProducts] = useState([])
+    const {categoryid} = useParams()
+    const [loading, setLoading] = useState(true)
+    
     useEffect(() => {
-       const list = ItemList()
+        const list = getProducts(categoryid)
+        list.then(list => {
+            setProducts(list)
+            setLoading(false)
+        })
 
-       list.then(list => {
-         setListProducts(list)
-       })
-    }, [])
+        return (() => {
+            setProducts([])
+            setLoading(true)
+        })
+
+    }, [categoryid])
+
 
     return (
-        <div>
-        <h1>CATALOGO</h1>
-        <ul className="catalogo">
-         { ListProducts.map(product => <li key={product.id}>{product.name}<br></br><img 
-        src={imagenes}></img><br></br>${product.price}</li>)}
-        </ul>
+        <div className="catalogoI" >
+             { loading ? "Cargando.." : <ItemList products={products}/> }
         </div>
-    )
+    )    
+    
 }
 
-
-    
-export default ItemListContainer 
+export default ItemListContainer

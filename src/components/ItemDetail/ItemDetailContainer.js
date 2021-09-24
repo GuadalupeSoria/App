@@ -1,36 +1,34 @@
-import '../ItemList/Item.css'
-import imagen from './B.jpg'
-import { useState,useEffect } from 'react';
-import Kits from './ItemDetail';
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import ItemDetail from '../ItemDetail/ItemDetail'
+import './ItemDetail.css'
+import { getProductById } from '../../products'
 
-function ItemDetail () {
-   
-    return new Promise ((resolve, reject) => {
-      setTimeout(() => resolve (Kits),2000)
-    })
-  }
+const ItemDetailContainer = ({ productsAdded, addProdFunction }) => {
 
-const ItemDetailContainer = () => {
-    const [ListProducts,setListProducts] = useState([])
-
+    const [product, setProduct] = useState(undefined)
+    const [loading, setLoading] = useState(true)
+    const {itemid} = useParams()
+    
     useEffect(() => {
-       const list = ItemDetail()
+        
+        getProductById(itemid).then(result => {
+            setProduct(result)
+            setLoading(false)
+            }
+        )
 
-       list.then(list => {
-         setListProducts(list)
-       })
-    }, [])
+        return (() => {
+            setProduct(undefined)
+        }
+        )
+
+    },[itemid])
 
     return (
-        <div>
-        <h1>Kits</h1>
-        <ul className="catalogo">
-         { ListProducts.map(product => <li key={product.id}>{product.name}<br></br><img 
-        src={imagen}></img><br></br>${product.price}</li>)}
-        </ul>
+        <div className='ItemDetailContainerD' >
+            {loading ? "Cargando.." : <ItemDetail product={product} itemid={itemid} productsAdded={productsAdded} addProdFunction={addProdFunction}/>}    
         </div>
     )
 }
-
-
-export default ItemDetailContainer 
+export default ItemDetailContainer

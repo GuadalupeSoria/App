@@ -1,11 +1,17 @@
-import Productos from './Item';
+import React from 'react'
+import Item from "./Item"
+import './Item.css'
 
-function ItemList () {
-   
-    return new Promise ((resolve, reject) => {
-      setTimeout(() => resolve (Productos),2000)
-    })
-  }
+const ItemList = ({products}) => {
 
+  if(products.length === 0) {
+    return <h3>No hay productos</h3>
+  } 
 
-export default ItemList
+  return (
+    <ul className="list-groupI">
+      {products.map(product =><Item key={product.id} product={product}/>)}
+    </ul>
+  )
+}
+export default React.memo(ItemList)

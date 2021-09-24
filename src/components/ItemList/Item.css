@@ -1,4 +1,4 @@
-.catalogo {
+.catalogoI {
     display: flex;
     color: #b36a5e;
     list-style: none;
@@ -7,7 +7,84 @@
     flex-direction: row;
     justify-content: space-around;
     font-size: 25px;
-  
-    
+    padding-top: 20px;
   }
 
+.ItemListContainerI {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    min-height: 80vh;
+  }  
+
+.CardItemI {
+    width: 300px;
+    padding: 25px;
+    margin: 30px;
+    font-size: 10px;
+    background-color: papayawhip;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+}
+
+.ContainerItemI {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    border-radius: 25px;
+    justify-content: center;
+}
+
+.ItemHeaderI {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.InfoI {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+    color:#b36a5e;
+    margin: 18px;
+}
+
+.ButtonI {
+    width: auto;
+    padding: 12px;
+    font-size: 15px;
+    background: #B36A5E;
+    border-radius: 8px;
+    flex: none;
+    display: flex;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.ItemImgI {
+    width: 215px;
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 6px;
+}
+
+.list-groupI {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 0px;
+}

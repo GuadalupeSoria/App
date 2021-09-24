@@ -1,9 +1,47 @@
-const Kits = [
-    {id:'01', name:'Kit 1', description:'Gua sha Ezra + Roller', stock:'10',price:2500,},
-    {id:'02', name:'Kit 2', description:'Roller Jade + Mushroom', stock:'12',price:2350,},
-    {id:'03', name:'Kit 3', description:'Gua sha Love + Roller + Aceite con Hialuronico ', stock:'15',price:3400,}]; 
-  
+import { useState, useContext } from 'react'
+import ItemCount from '../ItemCount/ItemCount'
+import {Link} from 'react-router-dom'
+import UserContext from '../../context/UserContext'
+import './ItemDetail.css'
 
 
+const ItemDetail = ({ product, productsAdded, addProdFunction }) => {
+    const [count, setCount] = useState(0)
+    const {user} = useContext(UserContext)
 
-export  default Kits 
+    if(!product) {
+        return <h3>{`Ese producto ya no existe`}</h3>
+    } 
+    
+    return (
+        <div className="CardItemD">
+            <div className="ContainerItemD">
+                <h2 className="ItemHeaderD">
+                    {product.name}
+                </h2>
+            </div>
+            <img src={product.img} alt={product.name} className="ItemImgD"/>
+            <p className="InfoD">
+            {`Categoria: ${product.category} `}
+            </p>
+            <p className="InfoD">
+            {`Precio: ${product.price} `}
+            </p>
+            <p className="InfoD">
+            {`Stock: ${product.stock} `}
+            </p>
+            <p className="InfoD">
+                {product.description}</p>
+
+            {
+            count === 0 && user
+                ? <ItemCount product={product} productsAdded={productsAdded} addProdFunction={addProdFunction} setCount={setCount} />
+                : user 
+                    ? <Link to='/cart'><button className="ButtonD">Ir al carrito</button></Link>
+                    : <Link to='/login'><button className="ButtonD">Inicia sesion</button></Link>
+            }
+        </div>
+
+    )
+}
+export default ItemDetail
