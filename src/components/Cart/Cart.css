@@ -30,3 +30,11 @@
     background-color: transparent;
     border: transparent;
 }
+
+.tituloCa {
+    text-transform: uppercase;
+    font-size: 30px;
+    text-decoration: underline;
+    text-decoration-color: #B36A5E;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
