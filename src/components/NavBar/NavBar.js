@@ -37,7 +37,7 @@ return (
         <h3 className="titulo">Sapphira</h3>
       </Link>
     </div>
-    <div className="Categories">
+    <div className="category">
         {category?.map(category => <NavLink key={category.id} to={`/category/${category.id}`} className='Option' activeClassName="NavLink">{category.description}</NavLink>)}     
       </div>
     <div>
